@@ -42,8 +42,9 @@ bool Fuzzy::addFuzzyInput(FuzzyInput *fuzzyInput)
     // allocating in memory
     if ((newOne = (fuzzyInputArray *)malloc(sizeof(fuzzyInputArray))) == NULL)
     {
-        // return false if in out of memory
-        return false;
+        // intentional hang the system if out of memory to reset
+        // for this to work, the watchdog timer should be enabled and setup
+        while(1);
     }
     // building the object
     newOne->fuzzyInput = fuzzyInput;
@@ -80,8 +81,9 @@ bool Fuzzy::addFuzzyOutput(FuzzyOutput *fuzzyOutput)
     // allocating in memory
     if ((newOne = (fuzzyOutputArray *)malloc(sizeof(fuzzyOutputArray))) == NULL)
     {
-        // return false if in out of memory
-        return false;
+        // intentional hang the system if out of memory to reset
+        // for this to work, the watchdog timer should be enabled and setup
+        while(1);
     }
     // building the object
     newOne->fuzzyOutput = fuzzyOutput;
@@ -120,8 +122,9 @@ bool Fuzzy::addFuzzyRule(FuzzyRule *fuzzyRule)
     // allocating in memory
     if ((newOne = (fuzzyRuleArray *)malloc(sizeof(fuzzyRuleArray))) == NULL)
     {
-        // return false if in out of memory
-        return false;
+        // intentional hang the system if out of memory to reset
+        // for this to work, the watchdog timer should be enabled and setup
+        while(1);
     }
     // building the object
     newOne->fuzzyRule = fuzzyRule;

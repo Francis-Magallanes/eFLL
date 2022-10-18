@@ -34,8 +34,9 @@ bool FuzzyRuleConsequent::addOutput(FuzzySet *fuzzySet)
     // allocating in memory
     if ((newOne = (fuzzySetOutputArray *)malloc(sizeof(fuzzySetOutputArray))) == NULL)
     {
-        // return false if in out of memory
-        return false;
+        // intentional hang the system if out of memory to reset
+        // for this to work, the watchdog timer should be enabled and setup
+        while(1);
     }
     // building the object
     newOne->fuzzySet = fuzzySet;

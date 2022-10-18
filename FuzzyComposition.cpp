@@ -33,8 +33,9 @@ bool FuzzyComposition::addPoint(float point, float pertinence)
     // allocating in memory
     if ((newOne = (pointsArray *)malloc(sizeof(pointsArray))) == NULL)
     {
-        // return false if in out of memory
-        return false;
+        // intentional hang the system if out of memory to reset
+        // for this to work, the watchdog timer should be enabled and setup
+        while(1);
     }
     // populate the struct
     newOne->previous = NULL;
@@ -285,8 +286,9 @@ bool FuzzyComposition::rebuild(pointsArray *aSegmentBegin, pointsArray *aSegment
         // allocating in memory
         if ((aux = (pointsArray *)malloc(sizeof(pointsArray))) == NULL)
         {
-            // return false if in out of memory
-            return false;
+            // intentional hang the system if out of memory to reset
+            // for this to work, the watchdog timer should be enabled and setup
+            while(1);
         }
         // calculate the point (y) and its pertinence (y) for the new element (pointsArray)
         aux->previous = bSegmentEnd;
